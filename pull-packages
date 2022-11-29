@@ -1,0 +1,4 @@
+#!/bin/bash
+if [ -d "$PATH/packages.txt" ]; then "rm -r packages.txt"
+      fi
+pacman -Qe | awk '{print $1}' > packages.txt
