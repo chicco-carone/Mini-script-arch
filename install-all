@@ -1,0 +1,3 @@
+#!/bin/bash
+yay --noconfirm -S $(tr "\n" " " < packages.txt)
+
