@@ -24,8 +24,11 @@ if command -v pacman >/dev/null 2>&1 ; then
   echo "Arch Linux detected, installing dependencies..."
   echo "Please enter your password when asked"
 
-  sudo pacman --noconfirm -Syu git nodejs npm
-  sudo npm install -g pnpm
+  sudo pacman --noconfirm --needed -Syu git nodejs npm git base-devel
+  git clone https://aur.archlinux.org/pnpm.git
+  cd pnpm
+  makepkg -si
+  
   echo "Dependencies done"
     
 fi
