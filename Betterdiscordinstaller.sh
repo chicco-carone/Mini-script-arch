@@ -40,9 +40,10 @@ pnpm build
 
 echo "What version of discord do you have installed?: 
           1 - Discord
-          2 - Discord Canary"
+          2 - Discord Canary
+          3 - Discord PTB"
 read -r -p "$(echo "Choose your option: ")" installpath
-if [ "$installpath" = 1 ] || [ "$installpath" = 2 ] ; then  
+if [ "$installpath" = 1 ] || [ "$installpath" = 2 ] || [ "$installpath" = 3] ; then  
     
   case "$installpath" in
     '1')
@@ -50,8 +51,11 @@ if [ "$installpath" = 1 ] || [ "$installpath" = 2 ] ; then
     ;;
         
     '2')
-        
       pnpm inject canary
+    ;;
+
+    '3')
+      pnpm inject ptb
     ;;
   esac
 fi
