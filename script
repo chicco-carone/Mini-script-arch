@@ -1,0 +1,60 @@
+#!/bin/bash
+
+function updater() {
+  yay
+  exit 1
+}
+
+function installer() {
+  read -r -p "$(echo "Write the name of the package that you want to install: ")" name
+    yay --needed -Syu $name
+    exit 1
+}
+
+function pull_packages() {
+    read -p "Inserisci il percorso dove salvare il file: " percorso
+        if [ -f $percorso/packages.txt ]; then
+    read -p 'Il file esiste già, vuoi sovrascriverlo? (s/n) ' choice
+        if [ $choice == 's' ]; then
+    rm -r $percorso/packages.txt
+    pacman -Qe | awk '{print $1}' > $percorso/packages.txt
+    echo "Il file è stato sovrascritto in $percorso/packages.txt"
+        else
+    echo "Il file non è stato sovrascritto"
+        fi
+        else
+    pacman -Qe | awk '{print $1}' > $percorso/packages.txt
+    echo "Il file è stato creato in $percorso/packages.txt"
+        fi
+
+    exit 1
+}
+
+function install_all() {
+    read -p "Inserisci il percorso del file packages.txt: " percorso
+    yay --needed -S $(tr "\n" " " < $percorsopackages.txt)
+    exit 1
+}
+function grub_updater() {
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+    exit 1
+}
+echo "Elenco dei sottoprogrammi:"
+echo "1. Updater"
+echo "2. Installer"
+echo "3. Pull packages"
+echo "4. Install all packages from file"
+echo "5. Grub Updater"
+
+while true; do
+  read -p "Inserisci il numero del sottoprogramma da avviare o premi invio per uscire: " input
+  case $input in
+    1) updater;;
+    2) installer;;
+    3) pull_packages;;
+    4) install_all;;
+    5) grub_updater;;
+    "") exit 0;;
+    *) echo "Input non valido.";;
+  esac
+done

@@ -1,0 +1,18 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Categories=System;
+Comment=App for all the scripts
+Exec=/home/chicco/.local/bin/script
+GenericName=Mini Script
+Icon=/home/chicco/Scaricati/Logo puello 400px.png
+MimeType=
+Name=Mini Script Chicco
+Path=/home/chicco/.local/bin
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
