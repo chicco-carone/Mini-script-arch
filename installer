@@ -1,4 +1,0 @@
-#!/bin/bash
-
-read -r -p "$(echo "Write the name of the package that you want to install: ")" name
-yay --needed -Syu $name
