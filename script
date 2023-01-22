@@ -32,7 +32,7 @@ function pull_packages() {
 
 function install_all() {
     read -p "Inserisci il percorso del file packages.txt: " percorso
-    yay --needed -S $(tr "\n" " " < $percorsopackages.txt)
+    yay --needed -S $(tr "\n" " " < $percorso/packages.txt)
     exit 1
 }
 function grub_updater() {
