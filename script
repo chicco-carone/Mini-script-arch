@@ -39,12 +39,18 @@ function grub_updater() {
     sudo grub-mkconfig -o /boot/grub/grub.cfg
     exit 1
 }
+function search_packages() {
+    read -p "Inserisci il pacchetto da cercare: " package
+    yay -Ss $package
+    exit 1
+}
 echo "Elenco dei sottoprogrammi:"
 echo "1. Updater"
 echo "2. Installer"
 echo "3. Pull packages"
 echo "4. Install all packages from file"
 echo "5. Grub Updater"
+echo "6. Search Packages"
 
 while true; do
   read -p "Inserisci il numero del sottoprogramma da avviare o premi invio per uscire: " input
@@ -54,6 +60,7 @@ while true; do
     3) pull_packages;;
     4) install_all;;
     5) grub_updater;;
+    6) search_packages;;
     "") exit 0;;
     *) echo "Input non valido.";;
   esac
